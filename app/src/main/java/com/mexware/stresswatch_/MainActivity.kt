@@ -9,6 +9,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.mexware.stresswatch_.layouts.ChatScreen
 import com.mexware.stresswatch_.layouts.HomeScreen
+import com.mexware.stresswatch_.layouts.UserScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,6 +21,7 @@ class MainActivity : ComponentActivity() {
             NavHost(navController = navController, startDestination = "home"){
                 composable(route = "home"){ HomeScreen( navController) }
                 composable(route = "Chat"){ ChatScreen( navController) }
+                composable(route = "User"){ UserScreen( navController) }
             }
 
         }
