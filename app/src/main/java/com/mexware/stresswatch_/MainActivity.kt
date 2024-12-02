@@ -16,13 +16,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            val navController = rememberNavController()
-
-            NavHost(navController = navController, startDestination = "home"){
-                composable(route = "home"){ HomeScreen( navController) }
-                composable(route = "Chat"){ ChatScreen( navController) }
-                composable(route = "User"){ UserScreen( navController) }
-            }
+            ControlScreen()
 
         }
     }
