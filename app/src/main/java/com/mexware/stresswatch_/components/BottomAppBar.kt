@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
+import com.mexware.stresswatch_.Screens
 
 @Composable
 fun BottomAppBar(navController: NavController) {
@@ -24,13 +25,13 @@ fun BottomAppBar(navController: NavController) {
             horizontalArrangement = Arrangement.SpaceBetween
 
         ) {
-            IconButton(onClick = { navController.navigate("home") }) {
+            IconButton(onClick = { navController.navigate(Screens.HomeScreen.name) }) {
                 Icon(Icons.Filled.Home, contentDescription = "Inicio")
             }
-            IconButton(onClick = { navController.navigate("chat") }) {
+            IconButton(onClick = { navController.navigate(Screens.ChatScreen.name) }) {
                 Icon(Icons.Filled.Home, contentDescription = "chat")
             }
-            IconButton(onClick = {navController.navigate("user") }) {
+            IconButton(onClick = {navController.navigate(Screens.UserScreen.name) }) {
                 Icon(Icons.Filled.Home, contentDescription = "Usuario")
             }
 

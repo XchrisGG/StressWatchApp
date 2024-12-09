@@ -20,7 +20,7 @@ fun ControlScreen(){
 
     NavHost(
         navController = navController,
-        startDestination = "Logo",
+        startDestination = Screens.LogoScreen.name,
         enterTransition = { slideIntoContainer(
             towards = AnimatedContentTransitionScope.SlideDirection.Left,
             animationSpec = tween(300)
@@ -40,13 +40,13 @@ fun ControlScreen(){
 
 
         ){
-        composable(route = "home"){ HomeScreen( navController) }
-        composable(route = "Chat"){ ChatScreen( navController) }
-        composable(route = "User"){ UserScreen( navController) }
-        composable(route = "Logo"){ LogoScreen( navController) }
-        composable(route = "LoginRegister"){ LoginRegisterScreen( navController) }
-        composable(route = "Login"){ LoginScreen( navController) }
-        composable(route = "Register"){ RegisterScreen( navController) }
+        composable(route = Screens.ChatScreen.name){ ChatScreen( navController) }
+        composable(route = Screens.HomeScreen.name){ HomeScreen( navController) }
+        composable(route = Screens.LoginRegisterScreen.name){ LoginRegisterScreen( navController) }
+        composable(route = Screens.LoginScreen.name){ LoginScreen( navController) }
+        composable(route = Screens.LogoScreen.name){ LogoScreen( navController) }
+        composable(route = Screens.RegisterScreen.name){ RegisterScreen( navController) }
+        composable(route = Screens.UserScreen.name){ UserScreen( navController) }
 
 
     }

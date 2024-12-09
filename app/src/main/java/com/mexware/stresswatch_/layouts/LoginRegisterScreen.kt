@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.mexware.stresswatch_.R
+import com.mexware.stresswatch_.Screens
 
 @Composable
 fun LoginRegisterScreen(navController: NavHostController) {
@@ -54,7 +55,7 @@ fun LoginRegisterScreen(navController: NavHostController) {
                 // Botón
                 ButtomAction(
                     text = "Iniciar Sesión",
-                    onClick = { navController.navigate("Login") },
+                    onClick = { navController.navigate(Screens.LoginScreen.name) },
                     backgroundColor = Color(0xFF87CEEB), // Fondo naranja
                     textColor = Color.White, // Texto blanco
                     fontSize = 18.sp, // Tamaño del texto
@@ -65,7 +66,7 @@ fun LoginRegisterScreen(navController: NavHostController) {
                 )
                 ButtomAction(
                     text = "Registrarte",
-                    onClick ={ navController.navigate("Login") },
+                    onClick ={ navController.navigate(Screens.RegisterScreen.name) },
                     backgroundColor = Color(0xFF87CEEB), // Fondo naranja
                     textColor = Color.White, // Texto blanco
                     fontSize = 18.sp, // Tamaño del texto

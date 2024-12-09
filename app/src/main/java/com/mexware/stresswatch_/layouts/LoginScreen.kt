@@ -48,11 +48,11 @@ fun LoginScreen(navController: NavHostController) {
 
 
 
-            })
+            }
 
 
 
 
         }
     }
-}
+

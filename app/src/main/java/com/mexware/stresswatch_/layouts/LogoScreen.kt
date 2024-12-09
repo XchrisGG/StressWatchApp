@@ -20,6 +20,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.mexware.stresswatch_.R
+import com.mexware.stresswatch_.Screens
 
 @Composable
 fun LogoScreen(navController: NavHostController) {
@@ -42,7 +43,7 @@ fun LogoScreen(navController: NavHostController) {
                 fillMaxWidth()
                     .scale(3f)
                     .clickable {
-                        navController.navigate("LoginRegister")
+                        navController.navigate(Screens.LoginRegisterScreen.name)
                     },
                 painter = painterResource(id = R.drawable.watch),
                 contentDescription = "logo")
