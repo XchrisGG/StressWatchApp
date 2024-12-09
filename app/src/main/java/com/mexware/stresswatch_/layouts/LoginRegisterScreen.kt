@@ -3,6 +3,7 @@ package com.mexware.stresswatch_.layouts
 import com.mexware.stresswatch_.components.ButtonAction
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -11,12 +12,15 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.mexware.stresswatch_.R
 import com.mexware.stresswatch_.Screens
@@ -53,6 +57,19 @@ fun LoginRegisterScreen(navController: NavHostController) {
                 ButtonAction(
                     text = "Registrarte",
                     onClick ={ navController.navigate(Screens.RegisterScreen.name) },
+
+                )
+
+                Spacer(modifier = Modifier.height(120.dp))
+
+
+                Text(
+                    text = "¿Recuperar Contraseña?",
+                    color = Color(0xFFFFFDD0),
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Black,
+
+
 
                 )
 
