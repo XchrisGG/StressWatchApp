@@ -14,24 +14,26 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun ButtonAction(
-    text: String, // Texto que se mostrará en el botón
-    onClick: () -> Unit // Acción a realizar al presionar el botón
+    text: String, // Texto del botón
+    onClick: () -> Unit, // Acción al hacer clic
+    modifier: Modifier = Modifier.fillMaxWidth(0.8f).height(64.dp), // Modificador por defecto
+    backgroundColor: Color = Color(0xFF87CEEB).copy(alpha = 0.9f), // Color de fondo
+    textColor: Color = Color(0xFFFFFDD0), // Color del texto
+    fontSize: Int = 24 // Tamaño de la fuente en SP
 ) {
     ElevatedButton(
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(
-            containerColor = Color(0xFF87CEEB).copy(alpha = 0.9f), // Color de fondo con opacidad
-            contentColor = Color(0xFFFFFDD0) // Color del texto
+            containerColor = backgroundColor,
+            contentColor = textColor
         ),
-        modifier = Modifier
-            .fillMaxWidth(0.8f) // Ocupa el 80% del ancho disponible
-            .height(64.dp) // Altura fija
+        modifier = modifier
     ) {
         Text(
             text = text,
-            color = Color(0xFFFFFDFD), // Color del texto
-            fontSize = 24.sp, // Tamaño de la fuente
-            fontWeight = FontWeight.Black // Peso de la tipografía
+            color = textColor,
+            fontSize = fontSize.sp,
+            fontWeight = FontWeight.Black
         )
     }
 }

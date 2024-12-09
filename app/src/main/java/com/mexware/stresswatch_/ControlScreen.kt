@@ -13,6 +13,7 @@ import com.mexware.stresswatch_.layouts.LoginScreen
 import com.mexware.stresswatch_.layouts.LogoScreen
 import com.mexware.stresswatch_.layouts.RegisterScreen
 import com.mexware.stresswatch_.layouts.UserScreen
+import com.mexware.stresswatch_.layouts.RecoverPassword
 
 @Composable
 fun ControlScreen(){
@@ -47,6 +48,7 @@ fun ControlScreen(){
         composable(route = Screens.LogoScreen.name){ LogoScreen( navController) }
         composable(route = Screens.RegisterScreen.name){ RegisterScreen( navController) }
         composable(route = Screens.UserScreen.name){ UserScreen( navController) }
+        composable(route = Screens.RecoverPasswordScreen.name){ RecoverPassword( navController) }
 
 
     }
