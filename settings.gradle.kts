@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "StressWatch_"
 include(":app")
 include(":smartwatch")
+include(":smart")

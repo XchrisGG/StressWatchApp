@@ -1,10 +1,12 @@
+
+
 package com.mexware.stresswatch_.layouts
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,18 +23,35 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.mexware.stresswatch_.R
-import com.mexware.stresswatch_.components.ButtonAction
-import com.mexware.stresswatch_.components.CustomPasswordField
+import com.mexware.stresswatch_.Screens
+import com.mexware.stresswatch_.components.BottomAppBar2
 import com.mexware.stresswatch_.components.CustomTextField
+import com.mexware.stresswatch_.components.TextField
 
 @Composable
-fun LoginScreen(navController: NavHostController) {
+fun AgeScreen(navController: NavHostController) {
     var textFieldValue by remember { mutableStateOf("") }
-    var passwordFieldValue by remember { mutableStateOf("") }
-    Scaffold { padding ->
+    Scaffold(
+        bottomBar = {
+            BottomAppBar2(
+                onBackClick = {
+                    // Acción cuando se hace clic en la flecha
+                    navController.navigate(Screens.NameScreen.name)
+                },
+                onNextClick = {
+                    // Acción cuando se hace clic en "Siguiente"
+                    navController.navigate(Screens.NameScreen.name)
+                }
+            )
+
+        }
+
+    ) { padding ->
         Column(
             modifier = Modifier
                 .fillMaxSize() // Ocupa todo el espacio disponible
@@ -45,10 +64,21 @@ fun LoginScreen(navController: NavHostController) {
             // Imagen
             Image(
                 modifier = Modifier
-                    .size(400.dp)
+                    .size(300.dp)
                     .padding(top = 20.dp), // Espaciado superior opcional
                 painter = painterResource(id = R.drawable.watch),
                 contentDescription = "logo"
+            )
+
+            TextField(
+                name = "¡Hola!",
+                modifier = Modifier.clickable {
+                    navController.navigate(Screens.RecoverPasswordScreen.name)
+                },
+                textColor = Color(0xFFFFFDD0), // Color del texto
+                fontSize = 30.sp, // Tamaño de la fuente
+                fontWeight = FontWeight.Black, // Peso de la fuente
+
             )
 
             Spacer(modifier = Modifier.height(25.dp)) // Espaciado
@@ -60,32 +90,8 @@ fun LoginScreen(navController: NavHostController) {
                 modifier = Modifier.fillMaxWidth(0.9f) // Ajusta el ancho si es necesario
             )
 
-            Spacer(modifier = Modifier.height(25.dp)) // Espaciado
-
-            CustomPasswordField(
-                value = passwordFieldValue,
-                onValueChange = { newPassword -> passwordFieldValue = newPassword },
-                placeholder = "Ingresa tu contraseña",
-                modifier = Modifier.fillMaxWidth(0.9f)
-            )
-
-            Spacer(modifier = Modifier.height(50.dp)) // Espaciado
-
-            // Alineamos el botón a la derecha con un margen derecho
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(end = 16.dp), // Espaciado desde el borde derecho
-                horizontalArrangement = Arrangement.End // Alineamos a la derecha
-            ) {
-                ButtonAction(
-                    text = "Inicar Sesión", // Texto del botón
-                    onClick = { /* Acción del botón */ },
-                    fontSize = 18, // Tamaño del texto (en SP)
-                    modifier = Modifier.height(56.dp) // Tamaño del botón (ancho y alto)
-                )
-            }
 
         }
     }
 }
+

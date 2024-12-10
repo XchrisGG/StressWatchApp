@@ -13,18 +13,18 @@
         </DropdownSelection>
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="app.smartwatch">
+      <SelectionState runConfigName="smartwatch">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-12-10T02:02:59.269903300Z">
+        <DropdownSelection timestamp="2024-12-10T06:11:27.399097100Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\uni\.android\avd\PruebasStressWatch.avd" />
+              <DeviceId pluginId="PhysicalDevice" identifier="serial=RFAX50968QK" />
             </handle>
           </Target>
         </DropdownSelection>
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="smartwatch">
+      <SelectionState runConfigName="smart">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

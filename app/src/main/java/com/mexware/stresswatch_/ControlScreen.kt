@@ -6,14 +6,17 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.mexware.stresswatch_.layouts.AgeScreen
 import com.mexware.stresswatch_.layouts.ChatScreen
 import com.mexware.stresswatch_.layouts.HomeScreen
 import com.mexware.stresswatch_.layouts.LoginRegisterScreen
 import com.mexware.stresswatch_.layouts.LoginScreen
 import com.mexware.stresswatch_.layouts.LogoScreen
+import com.mexware.stresswatch_.layouts.NameScreen
 import com.mexware.stresswatch_.layouts.RegisterScreen
 import com.mexware.stresswatch_.layouts.UserScreen
 import com.mexware.stresswatch_.layouts.RecoverPassword
+import java.util.jar.Attributes.Name
 
 @Composable
 fun ControlScreen(){
@@ -49,6 +52,9 @@ fun ControlScreen(){
         composable(route = Screens.RegisterScreen.name){ RegisterScreen( navController) }
         composable(route = Screens.UserScreen.name){ UserScreen( navController) }
         composable(route = Screens.RecoverPasswordScreen.name){ RecoverPassword( navController) }
+        composable(route = Screens.NameScreen.name){ NameScreen( navController) }
+        composable(route = Screens.AgeScreen.name){ AgeScreen( navController) }
+
 
 
     }

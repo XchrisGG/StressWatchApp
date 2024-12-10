@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-    namespace = "com.mexware.smartwatch"
+    namespace = "com.mexware.smart"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.mexware.smartwatch"
-        minSdk = 34
+        applicationId = "com.mexware.smart"
+        minSdk = 30
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -49,6 +49,7 @@ android {
 }
 
 dependencies {
+
     implementation(libs.androidx.tiles) // Tiles API
     implementation(libs.androidx.tiles.material) // Material para Tiles
     implementation(libs.androidx.activity.compose) // Soporte de Activity para Compose
@@ -56,20 +57,15 @@ dependencies {
     implementation(platform(libs.androidx.compose.bom)) // BOM para Compose
     implementation(libs.androidx.ui) // Jetpack Compose Runtime
     implementation(libs.androidx.wear.compose.material) // Material Design para Wear OS
-    implementation(libs.play.services.wearable)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.compose.material)
     implementation(libs.androidx.compose.foundation)
     implementation(libs.androidx.wear.tooling.preview)
-    implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.core.splashscreen)
-    implementation(libs.androidx.tiles)
-    implementation(libs.androidx.tiles.material)
     implementation(libs.horologist.compose.tools)
     implementation(libs.horologist.tiles)
     implementation(libs.androidx.watchface.complications.data.source.ktx)
+    implementation(libs.androidx.material3.android)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)

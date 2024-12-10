@@ -65,7 +65,7 @@ fun LoginRegisterScreen(navController: NavHostController) {
                 Spacer(modifier = Modifier.height(24.dp))
                 ButtonAction(
                     text = "Registrarte",
-                    onClick = { navController.navigate(Screens.LoginScreen.name) },
+                    onClick = { navController.navigate(Screens.RegisterScreen.name) },
                     modifier = Modifier
                         .fillMaxWidth(0.8f) // 80% del ancho disponible
                         .height(64.dp), // Altura fija

@@ -25,6 +25,7 @@ import androidx.wear.compose.material.Text
 import androidx.wear.compose.material.TimeText
 import androidx.wear.tooling.preview.devices.WearDevices
 import com.mexware.smartwatch.R
+import com.mexware.smartwatch.Screens.HomeScreen
 import com.mexware.smartwatch.presentation.theme.StressWatch_Theme
 
 class MainActivity : ComponentActivity() {
@@ -36,7 +37,7 @@ class MainActivity : ComponentActivity() {
         setTheme(android.R.style.Theme_DeviceDefault)
 
         setContent {
-            WearApp("Android")
+            HomeScreen()
         }
     }
 }
