@@ -49,7 +49,13 @@ android {
 }
 
 dependencies {
-
+    implementation(libs.play.services.wearable) // Comunicación entre dispositivos
+    implementation(platform(libs.androidx.compose.bom)) // BOM para Compose
+    implementation(libs.androidx.ui) // Jetpack Compose Runtime
+    implementation(libs.androidx.wear.compose.material) // Material Design para Wear OS
+    implementation(libs.androidx.tiles) // Tiles API
+    implementation(libs.androidx.tiles.material) // Material para Tiles
+    implementation(libs.androidx.activity.compose) // Soporte de Activity para Compose
     implementation(libs.play.services.wearable)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
