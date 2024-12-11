@@ -18,6 +18,8 @@ import com.mexware.stresswatch_.layouts.UserScreen
 import com.mexware.stresswatch_.layouts.RecoverPassword
 import com.mexware.stresswatch_.layouts.SexScreen
 import com.mexware.stresswatch_.layouts.InfoScreen
+import com.mexware.stresswatch_.layouts.CreateUserScreen
+
 
 @Composable
 fun ControlScreen(){
@@ -57,6 +59,8 @@ fun ControlScreen(){
         composable(route = Screens.AgeScreen.name){ AgeScreen( navController) }
         composable(route = Screens.SexScreen.name){ SexScreen(navController) }
         composable(route = Screens.InfoScreen.name){ InfoScreen(navController) }
+        composable(route = Screens.CreateUserScreen.name){ CreateUserScreen(navController) }
+
 
 
 

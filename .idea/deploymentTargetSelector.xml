@@ -4,7 +4,7 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-12-02T00:16:45.514742500Z">
+        <DropdownSelection timestamp="2024-12-11T04:45:26.144312400Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\uni\.android\avd\PruebasStressWatch.avd" />

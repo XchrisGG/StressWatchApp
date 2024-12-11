@@ -2,12 +2,15 @@ package com.mexware.stresswatch_.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -38,14 +41,22 @@ fun TopApp(navController: NavController, title: String) {
                     Icon(
                         imageVector = Icons.Default.KeyboardArrowLeft,
                         contentDescription = "Volver a la página anterior"
+
                     )
+
                 }
             }
+
         )
-        Divider(color = Color.White, thickness = 1.dp)
+        HorizontalDivider(thickness = 1.dp, color = Color.White)
+
+
+
+
+
     }
     Image(
-        modifier = Modifier.fillMaxWidth().size(85.dp),
+        modifier = Modifier.fillMaxWidth().size(88.dp),
         painter = painterResource(id = R.drawable.watch),
         contentDescription = "logo")
 

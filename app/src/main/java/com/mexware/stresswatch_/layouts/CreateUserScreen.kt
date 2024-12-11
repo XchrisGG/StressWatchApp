@@ -10,12 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Divider
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -31,40 +26,30 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.mexware.stresswatch_.R
 import com.mexware.stresswatch_.Screens
-import com.mexware.stresswatch_.components.AvatarSelection
 import com.mexware.stresswatch_.components.BottomAppBar2
+import com.mexware.stresswatch_.components.CustomPasswordField
 import com.mexware.stresswatch_.components.CustomTextField
 import com.mexware.stresswatch_.components.TextField
 import com.mexware.stresswatch_.components.TopApp
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun InfoScreen(navController: NavHostController) {
+fun CreateUserScreen(navController: NavHostController) {
     var textFieldValue by remember { mutableStateOf("") }
-    val avatars = listOf(
-        R.drawable.avatar1,
-        R.drawable.avatar2,
-        R.drawable.avatar3,
-        R.drawable.avatar4,
-        R.drawable.avatar5
+    var passwordFieldValue by remember { mutableStateOf("") }
 
-    )
 
-    var selectedAvatar by remember { mutableStateOf(-1) }
+
     Scaffold(
-        topBar = {
-            TopApp(navController = navController, title = "Información")
 
-        },
         bottomBar = {
             BottomAppBar2(
                 onBackClick = {
                     // Acción cuando se hace clic en la flecha
-                    navController.navigate(Screens.SexScreen.name)
+                    navController.navigate(Screens.InfoScreen.name)
                 },
                 onNextClick = {
                     // Acción cuando se hace clic en "Siguiente"
-                    navController.navigate(Screens.CreateUserScreen.name)
+                    navController.navigate(Screens.HomeScreen.name)
                 }
             )
 
@@ -81,34 +66,28 @@ fun InfoScreen(navController: NavHostController) {
             horizontalAlignment = Alignment.CenterHorizontally, // Centra horizontalmente
             verticalArrangement = Arrangement.Top // Comienza desde arriba
         ) {
+            Image(
+                modifier = Modifier
+                    .size(300.dp)
+                    .padding(top = 20.dp), // Espaciado superior opcional
+                painter = painterResource(id = R.drawable.watch),
+                contentDescription = "logo"
+            )
 
-            Spacer(modifier = Modifier.height(50.dp)) // Espaciado
 
             TextField(
-                name = "Casi finalizamos Christian",
+                name = "Crea un Perfil Seguro",
                 textColor = Color(0xFFFFFDD0), // Color del texto
                 fontSize = 25.sp, // Tamaño de la fuente
                 fontWeight = FontWeight.Black, // Peso de la fuente
 
             )
-            Spacer(modifier = Modifier.height(25.dp)) // Espaciado
-
-
-
-
-
             Spacer(modifier = Modifier.height(50.dp)) // Espaciado
-
-            AvatarSelection(avatars = avatars) { avatarRes ->
-                selectedAvatar = avatarRes
-            }
-            Spacer(modifier = Modifier.height(50.dp)) // Espaciado
-
 
 
 
             TextField(
-                name = "Ingresa tu fecha de nacimiento",
+                name = "Ingresa tu Correo electronico",
                 textColor = Color(0xFFFFFDD0), // Color del texto
                 fontSize = 18.sp, // Tamaño de la fuente
                 // Peso de la fuente
@@ -116,18 +95,17 @@ fun InfoScreen(navController: NavHostController) {
             )
 
             Spacer(modifier = Modifier.height(25.dp)) // Espaciado
-
             CustomTextField(
                 value = textFieldValue, // Estado que almacena el texto ingresado
                 onValueChange = { newText -> textFieldValue = newText },
-                placeholder = "DD/MM/AAAA", // Texto del placeholder
+                placeholder = "Christian@gmail.com", // Texto del placeholder
                 modifier = Modifier.fillMaxWidth(0.9f) // Ajusta el ancho si es necesario
             )
-
             Spacer(modifier = Modifier.height(50.dp)) // Espaciado
 
+
             TextField(
-                name = "Ingresa tu Pais",
+                name = "Ingresa tu contraseña",
                 textColor = Color(0xFFFFFDD0), // Color del texto
                 fontSize = 18.sp, // Tamaño de la fuente
                 // Peso de la fuente
@@ -136,14 +114,12 @@ fun InfoScreen(navController: NavHostController) {
             Spacer(modifier = Modifier.height(25.dp)) // Espaciado
 
 
-
-            CustomTextField(
-                value = textFieldValue, // Estado que almacena el texto ingresado
-                onValueChange = { newText -> textFieldValue = newText },
-                placeholder = "País de residencia", // Texto del placeholder
-                modifier = Modifier.fillMaxWidth(0.9f) // Ajusta el ancho si es necesario
+            CustomPasswordField(
+                value = passwordFieldValue,
+                onValueChange = { newPassword -> passwordFieldValue = newPassword },
+                placeholder = "Contraseña",
+                modifier = Modifier.fillMaxWidth(0.9f)
             )
-
 
         }
     }
