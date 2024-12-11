@@ -16,7 +16,8 @@ import com.mexware.stresswatch_.layouts.NameScreen
 import com.mexware.stresswatch_.layouts.RegisterScreen
 import com.mexware.stresswatch_.layouts.UserScreen
 import com.mexware.stresswatch_.layouts.RecoverPassword
-import java.util.jar.Attributes.Name
+import com.mexware.stresswatch_.layouts.SexScreen
+import com.mexware.stresswatch_.layouts.InfoScreen
 
 @Composable
 fun ControlScreen(){
@@ -54,6 +55,10 @@ fun ControlScreen(){
         composable(route = Screens.RecoverPasswordScreen.name){ RecoverPassword( navController) }
         composable(route = Screens.NameScreen.name){ NameScreen( navController) }
         composable(route = Screens.AgeScreen.name){ AgeScreen( navController) }
+        composable(route = Screens.SexScreen.name){ SexScreen(navController) }
+        composable(route = Screens.InfoScreen.name){ InfoScreen(navController) }
+
+
 
 
 

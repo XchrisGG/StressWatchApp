@@ -1,10 +1,11 @@
 
 
+
+
 package com.mexware.stresswatch_.layouts
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -34,7 +35,7 @@ import com.mexware.stresswatch_.components.CustomTextField
 import com.mexware.stresswatch_.components.TextField
 
 @Composable
-fun AgeScreen(navController: NavHostController) {
+fun InfoScreen(navController: NavHostController) {
     var textFieldValue by remember { mutableStateOf("") }
     Scaffold(
         bottomBar = {
@@ -71,10 +72,20 @@ fun AgeScreen(navController: NavHostController) {
             )
 
             TextField(
-                name = "¿Cual es tu edad?",
+                name = "Casi finalizamos Christian",
                 textColor = Color(0xFFFFFDD0), // Color del texto
-                fontSize = 30.sp, // Tamaño de la fuente
+                fontSize = 25.sp, // Tamaño de la fuente
                 fontWeight = FontWeight.Black, // Peso de la fuente
+
+            )
+            Spacer(modifier = Modifier.height(25.dp)) // Espaciado
+
+
+            TextField(
+                name = "Configura tu cuenta para tener una experiencia personalizada.",
+                textColor = Color.Black, // Color del texto
+                fontSize = 14.sp, // Tamaño de la fuente
+                 // Peso de la fuente
 
             )
 
@@ -83,7 +94,17 @@ fun AgeScreen(navController: NavHostController) {
             CustomTextField(
                 value = textFieldValue, // Estado que almacena el texto ingresado
                 onValueChange = { newText -> textFieldValue = newText },
-                placeholder = "Ingresa tu edad", // Texto del placeholder
+                placeholder = "DD/MM/AAAA", // Texto del placeholder
+                modifier = Modifier.fillMaxWidth(0.9f) // Ajusta el ancho si es necesario
+            )
+
+            Spacer(modifier = Modifier.height(50.dp)) // Espaciado
+
+
+            CustomTextField(
+                value = textFieldValue, // Estado que almacena el texto ingresado
+                onValueChange = { newText -> textFieldValue = newText },
+                placeholder = "País de residencia", // Texto del placeholder
                 modifier = Modifier.fillMaxWidth(0.9f) // Ajusta el ancho si es necesario
             )
 

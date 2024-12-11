@@ -11,5 +11,7 @@ sealed class Screens (val name: String){
     object RecoverPasswordScreen : Screens("RecoverPassword")
     object NameScreen : Screens("Name")
     object AgeScreen : Screens("Age")
+    object SexScreen : Screens("Sex")
+    object InfoScreen : Screens("Info")
 
 }

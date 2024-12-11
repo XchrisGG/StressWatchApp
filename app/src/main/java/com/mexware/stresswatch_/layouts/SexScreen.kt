@@ -30,22 +30,23 @@ import androidx.navigation.NavHostController
 import com.mexware.stresswatch_.R
 import com.mexware.stresswatch_.Screens
 import com.mexware.stresswatch_.components.BottomAppBar2
+import com.mexware.stresswatch_.components.ButtonAction
 import com.mexware.stresswatch_.components.CustomTextField
 import com.mexware.stresswatch_.components.TextField
 
 @Composable
-fun AgeScreen(navController: NavHostController) {
+fun SexScreen(navController: NavHostController) {
     var textFieldValue by remember { mutableStateOf("") }
     Scaffold(
         bottomBar = {
             BottomAppBar2(
                 onBackClick = {
                     // Acción cuando se hace clic en la flecha
-                    navController.navigate(Screens.NameScreen.name)
+                    navController.navigate(Screens.AgeScreen.name)
                 },
                 onNextClick = {
                     // Acción cuando se hace clic en "Siguiente"
-                    navController.navigate(Screens.SexScreen.name)
+                    navController.navigate(Screens.InfoScreen.name)
                 }
             )
 
@@ -71,21 +72,40 @@ fun AgeScreen(navController: NavHostController) {
             )
 
             TextField(
-                name = "¿Cual es tu edad?",
+                name = "Selecciona tu Género",
                 textColor = Color(0xFFFFFDD0), // Color del texto
                 fontSize = 30.sp, // Tamaño de la fuente
                 fontWeight = FontWeight.Black, // Peso de la fuente
 
             )
 
-            Spacer(modifier = Modifier.height(25.dp)) // Espaciado
+            Spacer(modifier = Modifier.height(50.dp)) // Espaciado
 
-            CustomTextField(
-                value = textFieldValue, // Estado que almacena el texto ingresado
-                onValueChange = { newText -> textFieldValue = newText },
-                placeholder = "Ingresa tu edad", // Texto del placeholder
-                modifier = Modifier.fillMaxWidth(0.9f) // Ajusta el ancho si es necesario
+            ButtonAction(
+                text = "Femenino (Ella)",
+                onClick = { navController.navigate(Screens.AgeScreen.name) },
+                modifier = Modifier
+                    .fillMaxWidth(0.8f) // 80% del ancho disponible
+                    .height(64.dp), // Altura fija
+                backgroundColor = Color(0xFF87CEEB).copy(alpha = 0.9f), // Color azul con opacidad
+                textColor = Color.Black, // Color crema para el texto
+                fontSize = 24 // Tamaño de la fuente en SP
             )
+            Spacer(modifier = Modifier.height(50.dp)) // Espaciado
+
+
+            ButtonAction(
+                text = "Masculino (Él)",
+                onClick = { navController.navigate(Screens.InfoScreen.name) },
+                modifier = Modifier
+                    .fillMaxWidth(0.8f) // 80% del ancho disponible
+                    .height(64.dp), // Altura fija
+                backgroundColor = Color(0xFF87CEEB).copy(alpha = 0.9f), // Color azul con opacidad
+                textColor = Color.Black, // Color crema para el texto
+                fontSize = 24 // Tamaño de la fuente en SP
+            )
+
+
 
 
         }

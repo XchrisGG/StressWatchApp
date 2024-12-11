@@ -46,7 +46,7 @@ fun NameScreen(navController: NavHostController) {
                 },
                 onNextClick = {
                     // Acción cuando se hace clic en "Siguiente"
-                    navController.navigate(Screens.NameScreen.name)
+                    navController.navigate(Screens.AgeScreen.name)
                 }
             )
 
@@ -73,9 +73,6 @@ fun NameScreen(navController: NavHostController) {
 
             TextField(
                 name = "¡Hola!",
-                modifier = Modifier.clickable {
-                    navController.navigate(Screens.RecoverPasswordScreen.name)
-                },
                 textColor = Color(0xFFFFFDD0), // Color del texto
                 fontSize = 30.sp, // Tamaño de la fuente
                 fontWeight = FontWeight.Black, // Peso de la fuente
