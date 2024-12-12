@@ -3,6 +3,7 @@
 package com.mexware.stresswatch_.layouts
 
 import OptionSelection
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -26,73 +27,70 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.mexware.stresswatch_.R
 import com.mexware.stresswatch_.Screens
+import com.mexware.stresswatch_.ViewModels.UserViewModel
 import com.mexware.stresswatch_.components.BottomAppBar2
 import com.mexware.stresswatch_.components.ButtonAction
 import com.mexware.stresswatch_.components.TextField
+import com.mexware.stresswatch_.models.Sexo
 
 @Composable
-fun SexScreen(navController: NavHostController) {
-    var textFieldValue by remember { mutableStateOf("") }
-    var selectedGender by remember { mutableStateOf("Masculino") }
+fun SexScreen(
+    navController: NavHostController,
+    userViewModel: UserViewModel
+
+) {
+    var sexo by remember { mutableStateOf(Sexo.Masculino) } // Usamos Sexo aquí
 
     Scaffold(
         bottomBar = {
             BottomAppBar2(
                 onBackClick = {
-                    // Acción cuando se hace clic en la flecha
                     navController.navigate(Screens.AgeScreen.name)
                 },
                 onNextClick = {
-                    // Acción cuando se hace clic en "Siguiente"
+                    // Guarda el género seleccionado en UserModel
+                    userViewModel.sexo = sexo
+                    Log.d("SexScreen", "sexo: ${userViewModel.sexo}")
                     navController.navigate(Screens.InfoScreen.name)
                 }
             )
-
         }
-
     ) { padding ->
         Column(
             modifier = Modifier
-                .fillMaxSize() // Ocupa todo el espacio disponible
-                .padding(padding) // Respeta el padding del Scaffold
-                .background(Color(0xFF022B53)), // Color de fondo
-            horizontalAlignment = Alignment.CenterHorizontally, // Centra horizontalmente
-            verticalArrangement = Arrangement.Top // Comienza desde arriba
+                .fillMaxSize()
+                .padding(padding)
+                .background(Color(0xFF022B53)),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Top
         ) {
-
-            // Imagen
             Image(
                 modifier = Modifier
                     .size(300.dp)
-                    .padding(top = 20.dp), // Espaciado superior opcional
+                    .padding(top = 20.dp),
                 painter = painterResource(id = R.drawable.watch),
                 contentDescription = "logo"
             )
 
             TextField(
                 name = "Selecciona tu Género",
-                textColor = Color(0xFFFFFDD0), // Color del texto
-                fontSize = 30.sp, // Tamaño de la fuente
-                fontWeight = FontWeight.Black, // Peso de la fuente
-
+                textColor = Color(0xFFFFFDD0),
+                fontSize = 30.sp,
+                fontWeight = FontWeight.Black
             )
 
-            Spacer(modifier = Modifier.height(50.dp)) // Espaciado
+            Spacer(modifier = Modifier.height(50.dp))
 
             OptionSelection(
-                selectedGender = selectedGender,
+                selectedGender = sexo, // Aquí pasamos el valor del enum Sexo
                 onGenderSelected = { newGender ->
-                    selectedGender = newGender
-                    // Aquí puedes realizar acciones adicionales cuando se selecciona un género
+                    sexo = newGender // Actualizamos el género seleccionado
                 }
             )
-
-
-
-
         }
     }
 }

@@ -4,22 +4,25 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.mexware.stresswatch_.components.ButtonAction
+import com.mexware.stresswatch_.models.Sexo // Importa el enum Sexo
 
 @Composable
 fun OptionSelection(
-    selectedGender: String,
-    onGenderSelected: (String) -> Unit,
+    selectedGender: Sexo, // Cambia a Sexo en lugar de String
+    onGenderSelected: (Sexo) -> Unit, // Cambia para aceptar un Sexo en lugar de un String
     modifier: Modifier = Modifier,
     textColor: Color = Color.Black // Default text color is black
 ) {
     var expanded by remember { mutableStateOf(false) }
-    val genders = listOf("Masculino", "Femenino", "Otro")
+
+    // Usamos el enum Sexo para la lista de géneros
+    val genders = listOf(Sexo.Masculino, Sexo.Femenino, Sexo.No_especificar)
 
     Box(modifier = modifier) {
         ButtonAction(
-            text = selectedGender,
+            text = selectedGender.name, // Mostrar el nombre del sexo
             onClick = { expanded = !expanded },
-            textColor = textColor // Pass the textColor to ButtonAction
+            textColor = textColor // Pasa el color de texto
         )
 
         DropdownMenu(
@@ -30,9 +33,9 @@ fun OptionSelection(
                 DropdownMenuItem(
                     onClick = {
                         expanded = false
-                        onGenderSelected(gender)
+                        onGenderSelected(gender) // Pasa el valor del enum
                     },
-                    text = { Text(text = gender, color = textColor) } // Use the textColor here as well
+                    text = { Text(text = gender.name, color = textColor) } // Mostrar el nombre del enum
                 )
             }
         }

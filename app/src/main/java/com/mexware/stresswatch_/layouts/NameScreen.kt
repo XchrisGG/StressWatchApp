@@ -1,10 +1,8 @@
-
-
 package com.mexware.stresswatch_.layouts
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -14,6 +12,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -29,13 +28,19 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.mexware.stresswatch_.R
 import com.mexware.stresswatch_.Screens
+import com.mexware.stresswatch_.ViewModels.UserViewModel
 import com.mexware.stresswatch_.components.BottomAppBar2
 import com.mexware.stresswatch_.components.CustomTextField
 import com.mexware.stresswatch_.components.TextField
 
 @Composable
-fun NameScreen(navController: NavHostController) {
-    var textFieldValue by remember { mutableStateOf("") }
+fun NameScreen(
+    navController: NavHostController,
+    userViewModel: UserViewModel
+) {
+    var nombres by remember { mutableStateOf("") }
+    var apellidos by remember { mutableStateOf("") }
+    var errorMessage by remember { mutableStateOf("") }
 
     Scaffold(
         bottomBar = {
@@ -45,8 +50,17 @@ fun NameScreen(navController: NavHostController) {
                     navController.navigate(Screens.RegisterScreen.name)
                 },
                 onNextClick = {
-                    // Acción cuando se hace clic en "Siguiente"
-                    navController.navigate(Screens.AgeScreen.name)
+                    if (nombres.isBlank() || apellidos.isBlank()) {
+                        errorMessage = "Por favor, completa todos los campos antes de continuar."
+                    } else {
+                        errorMessage = ""
+                        userViewModel.nombres = nombres
+                        userViewModel.apellidos = apellidos
+                        Log.d("NameScreen", "nombre: ${userViewModel.nombres}")
+                        Log.d("NameScreen", "apellido: ${userViewModel.apellidos}")
+
+                        navController.navigate(Screens.AgeScreen.name)
+                    }
                 }
             )
 
@@ -91,8 +105,8 @@ fun NameScreen(navController: NavHostController) {
 
 
             CustomTextField(
-                value = textFieldValue, // Estado que almacena el texto ingresado
-                onValueChange = { newText -> textFieldValue = newText },
+                value = nombres, // Estado que almacena el texto ingresado
+                onValueChange = { newText -> nombres = newText },
                 placeholder = "Ingresa Tu nombre", // Texto del placeholder
                 modifier = Modifier.fillMaxWidth(0.9f) // Ajusta el ancho si es necesario
             )
@@ -110,12 +124,23 @@ fun NameScreen(navController: NavHostController) {
 
 
             CustomTextField(
-                value = textFieldValue, // Estado que almacena el texto ingresado
-                onValueChange = { newText -> textFieldValue = newText },
+                value = apellidos, // Estado que almacena el texto ingresado
+                onValueChange = { newText -> apellidos = newText },
                 placeholder = "Ingresa tu apellido", // Texto del placeholder
                 modifier = Modifier.fillMaxWidth(0.9f) // Ajusta el ancho si es necesario
             )
 
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // Mostrar mensaje de error si es necesario
+            if (errorMessage.isNotEmpty()) {
+                Text(
+                    text = errorMessage,
+                    color = Color.Red,
+                    fontSize = 14.sp,
+                    modifier = Modifier.padding(horizontal = 16.dp)
+                )
+            }
 
         }
     }

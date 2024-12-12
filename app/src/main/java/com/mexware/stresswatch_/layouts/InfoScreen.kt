@@ -1,5 +1,6 @@
 package com.mexware.stresswatch_.layouts
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -28,19 +29,32 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.mexware.stresswatch_.R
 import com.mexware.stresswatch_.Screens
+import com.mexware.stresswatch_.ViewModels.UserViewModel
 import com.mexware.stresswatch_.components.AvatarSelection
 import com.mexware.stresswatch_.components.BottomAppBar2
+import com.mexware.stresswatch_.components.CustomDateTextField
 import com.mexware.stresswatch_.components.CustomTextField
 import com.mexware.stresswatch_.components.TextField
 import com.mexware.stresswatch_.components.TopApp
+import com.mexware.stresswatch_.models.Sexo
+import com.mexware.stresswatch_.models.UserModel
+import java.time.LocalDate
+import java.util.Date
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun InfoScreen(navController: NavHostController) {
-    var textFieldValue by remember { mutableStateOf("") }
+fun InfoScreen(
+    navController: NavHostController,
+    userViewModel: UserViewModel
+
+) {
+    var pais by remember { mutableStateOf("") }
+    var fechaNacimiento by remember { mutableStateOf(Date()) }
+
     val avatars = listOf(
         R.drawable.avatar1,
         R.drawable.avatar2,
@@ -63,9 +77,18 @@ fun InfoScreen(navController: NavHostController) {
                     navController.navigate(Screens.SexScreen.name)
                 },
                 onNextClick = {
-                    // Acción cuando se hace clic en "Siguiente"
+                    userViewModel.pais = pais
+                    userViewModel.fechaNacimiento = fechaNacimiento
+
+
+
+
+                    Log.d("InfoScreen", "fechaNacimiento ${userViewModel.fechaNacimiento}")
+                    Log.d("InfoScreen", "pais ${userViewModel.pais}")
+
                     navController.navigate(Screens.CreateUserScreen.name)
                 }
+
             )
 
 
@@ -117,11 +140,11 @@ fun InfoScreen(navController: NavHostController) {
 
             Spacer(modifier = Modifier.height(25.dp)) // Espaciado
 
-            CustomTextField(
-                value = textFieldValue, // Estado que almacena el texto ingresado
-                onValueChange = { newText -> textFieldValue = newText },
-                placeholder = "DD/MM/AAAA", // Texto del placeholder
-                modifier = Modifier.fillMaxWidth(0.9f) // Ajusta el ancho si es necesario
+            CustomDateTextField(
+                fechaNacimiento = fechaNacimiento,
+                onDateChange = { nuevaFecha ->
+                    fechaNacimiento = nuevaFecha
+                }
             )
 
             Spacer(modifier = Modifier.height(50.dp)) // Espaciado
@@ -138,8 +161,8 @@ fun InfoScreen(navController: NavHostController) {
 
 
             CustomTextField(
-                value = textFieldValue, // Estado que almacena el texto ingresado
-                onValueChange = { newText -> textFieldValue = newText },
+                value = pais, // Estado que almacena el texto ingresado
+                onValueChange = { newText -> pais = newText },
                 placeholder = "País de residencia", // Texto del placeholder
                 modifier = Modifier.fillMaxWidth(0.9f) // Ajusta el ancho si es necesario
             )

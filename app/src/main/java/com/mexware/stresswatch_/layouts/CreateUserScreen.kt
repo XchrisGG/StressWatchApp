@@ -1,5 +1,6 @@
 package com.mexware.stresswatch_.layouts
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -23,18 +24,24 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.mexware.stresswatch_.R
 import com.mexware.stresswatch_.Screens
+import com.mexware.stresswatch_.ViewModels.UserViewModel
 import com.mexware.stresswatch_.components.BottomAppBar2
 import com.mexware.stresswatch_.components.CustomPasswordField
 import com.mexware.stresswatch_.components.CustomTextField
 import com.mexware.stresswatch_.components.TextField
+import com.mexware.stresswatch_.models.UserModel
 
 @Composable
-fun CreateUserScreen(navController: NavHostController) {
-    var textFieldValue by remember { mutableStateOf("") }
-    var passwordFieldValue by remember { mutableStateOf("") }
+fun CreateUserScreen(
+    navController: NavHostController,
+    userViewModel: UserViewModel
+    ) {
+    var email by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
 
 
 
@@ -47,7 +54,14 @@ fun CreateUserScreen(navController: NavHostController) {
                     navController.navigate(Screens.InfoScreen.name)
                 },
                 onNextClick = {
-                    // Acción cuando se hace clic en "Siguiente"
+                    userViewModel.email = email
+                    userViewModel.password =  password
+                    Log.d("CreateUserScreen", "email: ${userViewModel.email}")
+                    Log.d("CreateUserScreen", "passord: ${userViewModel.password}")
+                    userViewModel.insertUser()
+
+
+
                     navController.navigate(Screens.HomeScreen.name)
                 }
             )
@@ -95,8 +109,8 @@ fun CreateUserScreen(navController: NavHostController) {
 
             Spacer(modifier = Modifier.height(25.dp)) // Espaciado
             CustomTextField(
-                value = textFieldValue, // Estado que almacena el texto ingresado
-                onValueChange = { newText -> textFieldValue = newText },
+                value = email, // Estado que almacena el texto ingresado
+                onValueChange = { newText -> email = newText },
                 placeholder = "Christian@gmail.com", // Texto del placeholder
                 modifier = Modifier.fillMaxWidth(0.9f) // Ajusta el ancho si es necesario
             )
@@ -114,8 +128,8 @@ fun CreateUserScreen(navController: NavHostController) {
 
 
             CustomPasswordField(
-                value = passwordFieldValue,
-                onValueChange = { newPassword -> passwordFieldValue = newPassword },
+                value = password,
+                onValueChange = { newPassword -> password = newPassword },
                 placeholder = "Contraseña",
                 modifier = Modifier.fillMaxWidth(0.9f)
             )

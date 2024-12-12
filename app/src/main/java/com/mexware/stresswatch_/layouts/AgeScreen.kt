@@ -2,9 +2,9 @@
 
 package com.mexware.stresswatch_.layouts
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -26,16 +26,22 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.mexware.stresswatch_.R
 import com.mexware.stresswatch_.Screens
+import com.mexware.stresswatch_.ViewModels.UserViewModel
 import com.mexware.stresswatch_.components.BottomAppBar2
-import com.mexware.stresswatch_.components.CustomTextField
+import com.mexware.stresswatch_.components.CustomNumericTextField
 import com.mexware.stresswatch_.components.TextField
 
 @Composable
-fun AgeScreen(navController: NavHostController) {
-    var textFieldValue by remember { mutableStateOf("") }
+fun AgeScreen(
+    navController: NavHostController,
+    userViewModel: UserViewModel
+
+) {
+    var edad by remember { mutableStateOf(0) }
     Scaffold(
         bottomBar = {
             BottomAppBar2(
@@ -44,10 +50,16 @@ fun AgeScreen(navController: NavHostController) {
                     navController.navigate(Screens.NameScreen.name)
                 },
                 onNextClick = {
-                    // Acción cuando se hace clic en "Siguiente"
+
+                        userViewModel.edad = edad
+                        Log.d("AgeScreen", "edad: ${userViewModel.edad}" )
+                        userViewModel.insertUser()
+
+
+
                     navController.navigate(Screens.SexScreen.name)
-                }
-            )
+                    }
+                )
 
         }
 
@@ -89,13 +101,16 @@ fun AgeScreen(navController: NavHostController) {
             )
             Spacer(modifier = Modifier.height(25.dp)) // Espaciado
 
-
-            CustomTextField(
-                value = textFieldValue, // Estado que almacena el texto ingresado
-                onValueChange = { newText -> textFieldValue = newText },
-                placeholder = "Ingresa tu edad", // Texto del placeholder
-                modifier = Modifier.fillMaxWidth(0.9f) // Ajusta el ancho si es necesario
+            CustomNumericTextField(
+                value = edad.toString(), // Convertimos la edad a String
+                onValueChange = { newText ->
+                    // Intentamos convertir el nuevo texto a Int y actualizar la edad
+                    edad = newText.toIntOrNull() ?: 0 // Si no es un número válido, se asigna 0
+                },
+                placeholder = "Ingresa tu edad",
+                modifier = Modifier.fillMaxWidth(0.9f)
             )
+
 
 
         }

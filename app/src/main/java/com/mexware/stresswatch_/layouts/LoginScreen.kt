@@ -1,5 +1,6 @@
 package com.mexware.stresswatch_.layouts
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -22,16 +23,25 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.mexware.stresswatch_.R
+import com.mexware.stresswatch_.Screens
+import com.mexware.stresswatch_.ViewModels.UserViewModel
 import com.mexware.stresswatch_.components.ButtonAction
 import com.mexware.stresswatch_.components.CustomPasswordField
 import com.mexware.stresswatch_.components.CustomTextField
 
 @Composable
-fun LoginScreen(navController: NavHostController) {
-    var textFieldValue by remember { mutableStateOf("") }
-    var passwordFieldValue by remember { mutableStateOf("") }
+fun LoginScreen(
+    navController: NavHostController,
+    userViewModel: UserViewModel = viewModel()
+
+) {
+    var email by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+    var loginMessage by remember { mutableStateOf("") }
+
     Scaffold { padding ->
         Column(
             modifier = Modifier
@@ -54,17 +64,17 @@ fun LoginScreen(navController: NavHostController) {
             Spacer(modifier = Modifier.height(25.dp)) // Espaciado
 
             CustomTextField(
-                value = textFieldValue, // Estado que almacena el texto ingresado
-                onValueChange = { newText -> textFieldValue = newText },
-                placeholder = "Ingresa Tu nombre", // Texto del placeholder
+                value = email, // Estado que almacena el texto ingresado
+                onValueChange = { newText -> email = newText },
+                placeholder = "Inrese tu Correo electronico", // Texto del placeholder
                 modifier = Modifier.fillMaxWidth(0.9f) // Ajusta el ancho si es necesario
             )
 
             Spacer(modifier = Modifier.height(25.dp)) // Espaciado
 
             CustomPasswordField(
-                value = passwordFieldValue,
-                onValueChange = { newPassword -> passwordFieldValue = newPassword },
+                value = password,
+                onValueChange = { newPassword -> password = newPassword },
                 placeholder = "Ingresa tu contraseña",
                 modifier = Modifier.fillMaxWidth(0.9f)
             )
@@ -80,7 +90,26 @@ fun LoginScreen(navController: NavHostController) {
             ) {
                 ButtonAction(
                     text = "Inicar Sesión", // Texto del botón
-                    onClick = { /* Acción del botón */ },
+                    onClick = {
+                        userViewModel.email = email
+                        userViewModel.password = password
+                        Log.d("LoginScreen", "email: ${userViewModel.email}")
+                        Log.d("LoginScreen", "email: ${userViewModel.password}")
+
+
+                        userViewModel.login { success, message ->
+                            if (success) {
+                                // Navegar a la siguiente pantalla
+                                navController.navigate(Screens.HomeScreen.name)
+                            } else {
+                                // Mostrar mensaje de error
+                                loginMessage = message ?: "Error desconocido"
+                            }
+                        }
+
+
+
+                    },
                     fontSize = 18, // Tamaño del texto (en SP)
                     modifier = Modifier.height(56.dp) // Tamaño del botón (ancho y alto)
                 )
