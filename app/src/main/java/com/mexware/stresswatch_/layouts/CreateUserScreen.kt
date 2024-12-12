@@ -30,7 +30,6 @@ import com.mexware.stresswatch_.components.BottomAppBar2
 import com.mexware.stresswatch_.components.CustomPasswordField
 import com.mexware.stresswatch_.components.CustomTextField
 import com.mexware.stresswatch_.components.TextField
-import com.mexware.stresswatch_.components.TopApp
 
 @Composable
 fun CreateUserScreen(navController: NavHostController) {

@@ -71,14 +71,24 @@ fun AgeScreen(navController: NavHostController) {
             )
 
             TextField(
-                name = "¿Cual es tu edad?",
+                name = "Una experiencia personalizada",
                 textColor = Color(0xFFFFFDD0), // Color del texto
-                fontSize = 30.sp, // Tamaño de la fuente
+                fontSize = 26.sp, // Tamaño de la fuente
                 fontWeight = FontWeight.Black, // Peso de la fuente
 
             )
 
+            Spacer(modifier = Modifier.height(50.dp)) // Espaciado
+
+            TextField(
+                name = "¿Que edad tienes?",
+                textColor = Color(0xFFFFFDD0), // Color del texto
+                fontSize = 18.sp, // Tamaño de la fuente
+                fontWeight = FontWeight.Black, // Peso de la fuente
+
+            )
             Spacer(modifier = Modifier.height(25.dp)) // Espaciado
+
 
             CustomTextField(
                 value = textFieldValue, // Estado que almacena el texto ingresado

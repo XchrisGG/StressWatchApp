@@ -2,9 +2,9 @@
 
 package com.mexware.stresswatch_.layouts
 
+import OptionSelection
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -31,12 +31,13 @@ import com.mexware.stresswatch_.R
 import com.mexware.stresswatch_.Screens
 import com.mexware.stresswatch_.components.BottomAppBar2
 import com.mexware.stresswatch_.components.ButtonAction
-import com.mexware.stresswatch_.components.CustomTextField
 import com.mexware.stresswatch_.components.TextField
 
 @Composable
 fun SexScreen(navController: NavHostController) {
     var textFieldValue by remember { mutableStateOf("") }
+    var selectedGender by remember { mutableStateOf("Masculino") }
+
     Scaffold(
         bottomBar = {
             BottomAppBar2(
@@ -81,28 +82,12 @@ fun SexScreen(navController: NavHostController) {
 
             Spacer(modifier = Modifier.height(50.dp)) // Espaciado
 
-            ButtonAction(
-                text = "Femenino (Ella)",
-                onClick = { navController.navigate(Screens.AgeScreen.name) },
-                modifier = Modifier
-                    .fillMaxWidth(0.8f) // 80% del ancho disponible
-                    .height(64.dp), // Altura fija
-                backgroundColor = Color(0xFF87CEEB).copy(alpha = 0.9f), // Color azul con opacidad
-                textColor = Color.Black, // Color crema para el texto
-                fontSize = 24 // Tamaño de la fuente en SP
-            )
-            Spacer(modifier = Modifier.height(50.dp)) // Espaciado
-
-
-            ButtonAction(
-                text = "Masculino (Él)",
-                onClick = { navController.navigate(Screens.InfoScreen.name) },
-                modifier = Modifier
-                    .fillMaxWidth(0.8f) // 80% del ancho disponible
-                    .height(64.dp), // Altura fija
-                backgroundColor = Color(0xFF87CEEB).copy(alpha = 0.9f), // Color azul con opacidad
-                textColor = Color.Black, // Color crema para el texto
-                fontSize = 24 // Tamaño de la fuente en SP
+            OptionSelection(
+                selectedGender = selectedGender,
+                onGenderSelected = { newGender ->
+                    selectedGender = newGender
+                    // Aquí puedes realizar acciones adicionales cuando se selecciona un género
+                }
             )
 
 

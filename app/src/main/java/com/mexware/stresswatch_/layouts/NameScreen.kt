@@ -79,12 +79,40 @@ fun NameScreen(navController: NavHostController) {
 
             )
 
+            Spacer(modifier = Modifier.height(50.dp)) // Espaciado
+            TextField(
+                name = "Ingresa Tu nombre",
+                textColor = Color(0xFFFFFDD0), // Color del texto
+                fontSize = 16.sp, // Tamaño de la fuente
+                fontWeight = FontWeight.Black, // Peso de la fuente
+
+            )
             Spacer(modifier = Modifier.height(25.dp)) // Espaciado
+
 
             CustomTextField(
                 value = textFieldValue, // Estado que almacena el texto ingresado
                 onValueChange = { newText -> textFieldValue = newText },
                 placeholder = "Ingresa Tu nombre", // Texto del placeholder
+                modifier = Modifier.fillMaxWidth(0.9f) // Ajusta el ancho si es necesario
+            )
+            Spacer(modifier = Modifier.height(50.dp)) // Espaciado
+
+            TextField(
+                name = "Ingresa Tus apellidos",
+                textColor = Color(0xFFFFFDD0), // Color del texto
+                fontSize = 16.sp, // Tamaño de la fuente
+                fontWeight = FontWeight.Black, // Peso de la fuente
+
+            )
+            Spacer(modifier = Modifier.height(25.dp)) // Espaciado
+
+
+
+            CustomTextField(
+                value = textFieldValue, // Estado que almacena el texto ingresado
+                onValueChange = { newText -> textFieldValue = newText },
+                placeholder = "Ingresa tu apellido", // Texto del placeholder
                 modifier = Modifier.fillMaxWidth(0.9f) // Ajusta el ancho si es necesario
             )
 
