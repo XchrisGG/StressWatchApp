@@ -22,6 +22,7 @@ horologistComposeTools = "0.4.8"
 horologistTiles = "0.4.8"
 watchfaceComplicationsDataSourceKtx = "1.1.1"
 material3Android = "1.3.1"
+playServicesBase = "18.2.1"
 
 ##########Librerias para la conexion de la base de datos###############
 retrofit = "2.9.0"
@@ -62,6 +63,8 @@ horologist-tiles = { group = "com.google.android.horologist", name = "horologist
 androidx-watchface-complications-data-source-ktx = { group = "androidx.wear.watchface", name = "watchface-complications-data-source-ktx", version.ref = "watchfaceComplicationsDataSourceKtx" }
 
 #Librerias que se agregaron para la conexion del smartwatch
+play-services-base = { group = "com.google.android.gms", name = "play-services-base", version.ref = "playServicesBase" }
+
 
 
 androidx-wear-compose-material = { group = "androidx.wear.compose", name = "compose-material" }
