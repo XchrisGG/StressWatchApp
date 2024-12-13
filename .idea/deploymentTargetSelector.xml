@@ -4,10 +4,10 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-12-11T04:45:26.144312400Z">
+        <DropdownSelection timestamp="2024-12-13T05:34:47.422019600Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\uni\.android\avd\PruebasStressWatch.avd" />
+              <DeviceId pluginId="Default" identifier="serial=192.168.1.11:36955;connection=c2722fa7" />
             </handle>
           </Target>
         </DropdownSelection>
@@ -26,6 +26,14 @@
       </SelectionState>
       <SelectionState runConfigName="smart">
         <option name="selectionMode" value="DROPDOWN" />
+        <DropdownSelection timestamp="2024-12-12T19:44:40.534567300Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="Default" identifier="serial=192.168.68.112:40411;connection=d5162055" />
+            </handle>
+          </Target>
+        </DropdownSelection>
+        <DialogSelection />
       </SelectionState>
     </selectionStates>
   </component>

@@ -9,13 +9,13 @@ import retrofit2.http.POST
 
 // Esta es una interfaz que define el endpoint para obtener datos
 interface UserEndPoint {
-    @GET("http://192.168.1.10:9000/api/users") // Asumiendo que esta es la URL correcta en tu servidor
+    @GET("http://192.168.68.110:9000/api/users") // Asumiendo que esta es la URL correcta en tu servidor
     suspend fun getUserData(): List<UserModel>
 
-    @POST("http://192.168.1.10:9000/api/users") // Ruta en tu servidor
+    @POST("https://backexpress-1.onrender.com/api/users") // Ruta en tu servidor
     suspend fun insertUser(@Body user: UserModel): UserModel
 
-    @POST("http://192.168.1.10:9000/api/login") // Ruta en tu servidor
+    @POST("http://192.168.68.110:9000/api/login") // Ruta en tu servidor
     suspend fun login(@Body user: LoginRequest): LoginResponse
 
 

@@ -51,9 +51,11 @@ fun AgeScreen(
                 },
                 onNextClick = {
 
+
+
+
                         userViewModel.edad = edad
-                        Log.d("AgeScreen", "edad: ${userViewModel.edad}" )
-                        userViewModel.insertUser()
+
 
 
 
