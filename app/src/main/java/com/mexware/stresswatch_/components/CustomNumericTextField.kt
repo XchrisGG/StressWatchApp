@@ -8,6 +8,7 @@ import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,8 +27,8 @@ fun CustomNumericTextField(
     onValueChange: (String) -> Unit, // Callback para manejar cambios en el texto
     placeholder: String, // Texto del placeholder
     modifier: Modifier = Modifier.fillMaxWidth(), // Modificador predeterminado
-    backgroundColor: Color = Color(0xFFADD8E6), // Color de fondo
-    placeholderColor: Color = Color.Black, // Color del placeholder
+    backgroundColor: Color= MaterialTheme.colorScheme.inversePrimary, // Color de fondo
+    placeholderColor: Color = MaterialTheme.colorScheme.primaryContainer, // Color del placeholder
     placeholderFontSize: Int = 18 // Tamaño del texto del placeholder en SP
 ) {
     Box(

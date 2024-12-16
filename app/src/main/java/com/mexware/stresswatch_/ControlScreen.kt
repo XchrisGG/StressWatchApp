@@ -30,7 +30,7 @@ fun ControlScreen(){
 
     NavHost(
         navController = navController,
-        startDestination = Screens.LogoScreen.name,
+        startDestination = Screens.ChatScreen.name,
         enterTransition = { slideIntoContainer(
             towards = AnimatedContentTransitionScope.SlideDirection.Left,
             animationSpec = tween(300)

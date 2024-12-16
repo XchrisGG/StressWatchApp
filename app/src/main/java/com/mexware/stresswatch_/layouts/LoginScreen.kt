@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -47,7 +48,7 @@ fun LoginScreen(
             modifier = Modifier
                 .fillMaxSize() // Ocupa todo el espacio disponible
                 .padding(padding) // Respeta el padding del Scaffold
-                .background(Color(0xFF022B53)), // Color de fondo
+                .background(MaterialTheme.colorScheme.background), // Color de fondo
             horizontalAlignment = Alignment.CenterHorizontally, // Centra horizontalmente
             verticalArrangement = Arrangement.Top // Comienza desde arriba
         ) {
@@ -66,7 +67,7 @@ fun LoginScreen(
             CustomTextField(
                 value = email, // Estado que almacena el texto ingresado
                 onValueChange = { newText -> email = newText },
-                placeholder = "Inrese tu Correo electronico", // Texto del placeholder
+                placeholder = "Ingrese tu Correo electronico", // Texto del placeholder
                 modifier = Modifier.fillMaxWidth(0.9f) // Ajusta el ancho si es necesario
             )
 
@@ -77,6 +78,7 @@ fun LoginScreen(
                 onValueChange = { newPassword -> password = newPassword },
                 placeholder = "Ingresa tu contraseña",
                 modifier = Modifier.fillMaxWidth(0.9f)
+
             )
 
             Spacer(modifier = Modifier.height(50.dp)) // Espaciado
@@ -110,8 +112,12 @@ fun LoginScreen(
 
 
                     },
-                    fontSize = 18, // Tamaño del texto (en SP)
-                    modifier = Modifier.height(56.dp) // Tamaño del botón (ancho y alto)
+                    modifier = Modifier
+                        .fillMaxWidth(0.8f) // 80% del ancho disponible
+                        .height(64.dp), // Altura fija
+                    fontSize = 24 // Tamaño de la fuente en SP
+
+
                 )
             }
 

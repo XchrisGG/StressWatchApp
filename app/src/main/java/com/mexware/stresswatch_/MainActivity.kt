@@ -10,13 +10,16 @@ import androidx.navigation.compose.rememberNavController
 import com.mexware.stresswatch_.layouts.ChatScreen
 import com.mexware.stresswatch_.layouts.HomeScreen
 import com.mexware.stresswatch_.layouts.UserScreen
+import com.mexware.stresswatch_.ui.theme.stresswatchthme.AppTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            AppTheme {
             ControlScreen()
+            }
 
         }
     }

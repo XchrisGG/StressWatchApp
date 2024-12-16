@@ -8,21 +8,23 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
+import com.mexware.stresswatch_.ui.theme.stresswatchthme.AppTheme
 
 @Composable
 fun BottomAppBar2(
     onBackClick: () -> Unit,  // Función para la acción de la flecha
     onNextClick: () -> Unit   // Función para la acción del texto "Siguiente"
 ) {
+    AppTheme {
     BottomAppBar(
-        containerColor = Color(0xFFADD8E6), // Color de fondo
-        contentColor = androidx.compose.ui.graphics.Color.Red // Color del contenido
+        containerColor = MaterialTheme.colorScheme.inversePrimary// Color de fondo
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -39,8 +41,9 @@ fun BottomAppBar2(
 
             // Botón de texto "Siguiente"
             TextButton(onClick = { onNextClick() }) {
-                Text(text = "Siguiente", fontSize = 18.sp, color = Color.Black)
+                Text(text = "Siguiente", fontSize = 18.sp, color = MaterialTheme.colorScheme.onTertiaryContainer)
             }
         }
+    }
     }
 }

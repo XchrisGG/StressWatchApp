@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.mexware.stresswatch_.R
 import com.mexware.stresswatch_.Screens
+import com.mexware.stresswatch_.ui.theme.stresswatchthme.AppTheme
 
 @Composable
 fun LogoScreen(navController: NavHostController) {
@@ -32,7 +34,7 @@ fun LogoScreen(navController: NavHostController) {
             modifier = Modifier
                 .fillMaxSize() // Ocupa todo el espacio disponible
                 .padding(padding) // Respeta el espacio de las barras
-                .background(Color(0xFF022B53)),// Color de fondo del Box
+                .background(MaterialTheme.colorScheme.background),// Color de fondo del Box
                     horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
 
@@ -51,5 +53,6 @@ fun LogoScreen(navController: NavHostController) {
         }
 
     }
+    }
 
-}
+

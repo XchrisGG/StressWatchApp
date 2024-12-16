@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,11 +24,11 @@ fun CustomTextField(
     value: String, // Texto ingresado por el usuario
     onValueChange: (String) -> Unit, // Callback para manejar cambios en el texto
     placeholder: String, // Texto del placeholder
-    modifier: Modifier = Modifier.fillMaxWidth(), // Modificador predeterminado
-    backgroundColor: Color = Color(0xFFADD8E6), // Color de fondo
-    placeholderColor: Color = Color.Black, // Color del placeholder
-    placeholderFontSize: Int = 18 // Tamaño del texto del placeholder en SP
+    modifier: Modifier = Modifier.fillMaxWidth() // Modificador predeterminado
 ) {
+    // Definir los colores directamente en el componente
+    val backgroundColor = MaterialTheme.colorScheme.inversePrimary // Fondo (color oscuro)
+
     Box(
         modifier = modifier
             .clip(
@@ -46,8 +47,8 @@ fun CustomTextField(
                 Text(
                     text = placeholder,
                     style = TextStyle(
-                        color = placeholderColor,
-                        fontSize = placeholderFontSize.sp,
+                        color =  Color(0xFF000000), // Usar color de placeholder definido directamente
+                        fontSize = 18.sp,
                         fontWeight = FontWeight.Normal
                     )
                 )

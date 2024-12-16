@@ -4,7 +4,9 @@ import com.mexware.stresswatch_.components.BottomAppBar
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.material3.Scaffold
@@ -29,14 +31,20 @@ fun ChatScreen(navController: NavHostController) {
         }
 
     ){ padding ->
-
-        Box(
+        Column(
             modifier = Modifier
-                .fillMaxSize() // Ocupa todo el espacio disponible
-                .padding(padding) // Respeta el espacio de las barras
-                .background(Color(0xFF022B53)) // Color de fondo del Box
+                .fillMaxSize()
+                .padding(padding)
+        ){
+            //Mensajes
+            Box
 
-        )
+            }
+            //Salida de menssajes
+            Box {
+
+            }
+        }
 
     }
 }

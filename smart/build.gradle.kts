@@ -49,7 +49,6 @@ android {
 }
 
 dependencies {
-    implementation(libs.play.services.base) // Nueva dependencia
 
 
     implementation(libs.androidx.tiles) // Tiles API

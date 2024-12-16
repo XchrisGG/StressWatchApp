@@ -25,7 +25,7 @@ fun SimpleTextCard(
             .fillMaxWidth() // La tarjeta ocupa todo el ancho disponible
             .padding(horizontal = 16.dp, vertical = 50.dp) // Margen externo
             .clickable { onClick() }, // Agrega acción de clic
-        colors = CardDefaults.cardColors(containerColor = backgroundColor) // Color de fondo
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.inversePrimary) // Color de fondo
     ) {
         Column(
             modifier = Modifier

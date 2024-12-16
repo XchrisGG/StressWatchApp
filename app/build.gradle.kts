@@ -53,7 +53,6 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.gson.converter)
     implementation(libs.kotlin.coroutines)
-    implementation(libs.play.services.base) // Nueva dependencia
 
 
     implementation(libs.androidx.core.ktx)
@@ -70,6 +69,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics.android)
     implementation(libs.androidx.foundation.android)
     implementation(libs.androidx.foundation.android)
+    implementation(libs.core.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

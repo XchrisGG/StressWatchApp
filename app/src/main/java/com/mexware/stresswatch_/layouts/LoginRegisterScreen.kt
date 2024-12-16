@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -27,6 +28,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.mexware.stresswatch_.R
 import com.mexware.stresswatch_.Screens
+import com.mexware.stresswatch_.ui.theme.stresswatchthme.AppTheme
 
 @Composable
 fun LoginRegisterScreen(navController: NavHostController) {
@@ -35,7 +37,7 @@ fun LoginRegisterScreen(navController: NavHostController) {
                 modifier = Modifier
                     .fillMaxSize() // Ocupa todo el espacio disponible
                     .padding(padding) // Respeta el padding del Scaffold
-                    .background(Color(0xFF022B53)), // Color de fondo
+                    .background(MaterialTheme.colorScheme.background), // Color de fondo
                 horizontalAlignment = Alignment.CenterHorizontally, // Centra horizontalmente
                 verticalArrangement = Arrangement.Top // Comienza desde arriba
             ) {
@@ -57,8 +59,6 @@ fun LoginRegisterScreen(navController: NavHostController) {
                     modifier = Modifier
                         .fillMaxWidth(0.8f) // 80% del ancho disponible
                         .height(64.dp), // Altura fija
-                    backgroundColor = Color(0xFF87CEEB).copy(alpha = 0.9f), // Color azul con opacidad
-                    textColor = Color.Black, // Color crema para el texto
                     fontSize = 24 // Tamaño de la fuente en SP
                 )
 
@@ -69,8 +69,7 @@ fun LoginRegisterScreen(navController: NavHostController) {
                     modifier = Modifier
                         .fillMaxWidth(0.8f) // 80% del ancho disponible
                         .height(64.dp), // Altura fija
-                    backgroundColor = Color(0xFF87CEEB).copy(alpha = 0.9f), // Color azul con opacidad
-                    textColor = Color.Black, // Color crema para el texto
+
                     fontSize = 24 // Tamaño de la fuente en SP
                 )
                 Spacer(modifier = Modifier.height(120.dp))
@@ -80,7 +79,7 @@ fun LoginRegisterScreen(navController: NavHostController) {
                     modifier = Modifier.clickable {
                         navController.navigate(Screens.RecoverPasswordScreen.name)
                     },
-                    textColor = Color(0xFFFFFDD0), // Color del texto
+                    textColor = MaterialTheme.colorScheme.onTertiaryContainer, // Color del texto
                     fontSize = 16.sp, // Tamaño de la fuente
                     fontWeight = FontWeight.Black, // Peso de la fuente
 
@@ -93,3 +92,4 @@ fun LoginRegisterScreen(navController: NavHostController) {
             }
         }
     }
+

@@ -34,6 +34,7 @@ import com.mexware.stresswatch_.components.OptionCard
 import com.mexware.stresswatch_.components.SimpleTextCard
 import com.mexware.stresswatch_.components.TextField
 import com.mexware.stresswatch_.components.TopApp
+import com.mexware.stresswatch_.ui.theme.stresswatchthme.AppTheme
 
 @Composable
 fun RegisterScreen(navController: NavHostController) {
@@ -60,11 +61,12 @@ fun RegisterScreen(navController: NavHostController) {
 
     ){ padding ->
 
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
-                .background(Color(0xFF022B53)) // Fondo azul oscuro
+                .background(MaterialTheme.colorScheme.background) // Fondo azul oscuro
                 .verticalScroll(rememberScrollState()), // Permitir scroll si es necesario
             horizontalAlignment = Alignment.CenterHorizontally // Centrar contenido
         ) {
@@ -110,4 +112,5 @@ fun RegisterScreen(navController: NavHostController) {
 
 
     }
+
 }

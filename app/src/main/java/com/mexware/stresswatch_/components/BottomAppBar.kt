@@ -8,16 +8,18 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
 import com.mexware.stresswatch_.Screens
+import com.mexware.stresswatch_.ui.theme.stresswatchthme.AppTheme
 
 @Composable
 fun BottomAppBar(navController: NavController) {
     BottomAppBar(
-        containerColor = Color(0xFFADD8E6), // Color de fondo
+        containerColor = MaterialTheme.colorScheme.inversePrimary, // Color de fondo
         contentColor = androidx.compose.ui.graphics.Color.Red // Color del contenido
     ) {
         Row(
@@ -38,4 +40,5 @@ fun BottomAppBar(navController: NavController) {
 
         }
     }
+
 }

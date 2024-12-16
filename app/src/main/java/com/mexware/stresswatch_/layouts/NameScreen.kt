@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -71,7 +72,7 @@ fun NameScreen(
             modifier = Modifier
                 .fillMaxSize() // Ocupa todo el espacio disponible
                 .padding(padding) // Respeta el padding del Scaffold
-                .background(Color(0xFF022B53)), // Color de fondo
+                .background(MaterialTheme.colorScheme.background), // Color de fondo
             horizontalAlignment = Alignment.CenterHorizontally, // Centra horizontalmente
             verticalArrangement = Arrangement.Top // Comienza desde arriba
         ) {

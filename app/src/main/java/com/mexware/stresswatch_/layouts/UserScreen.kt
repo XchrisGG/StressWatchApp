@@ -43,7 +43,7 @@ fun UserScreen( navController: NavController){
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
-                .background(Color(0xFF022B53)) // Fondo azul oscuro
+                .background(MaterialTheme.colorScheme.background) // Fondo azul oscuro
                 .verticalScroll(rememberScrollState()), // Permitir scroll si es necesario
             horizontalAlignment = Alignment.CenterHorizontally // Centrar contenido
         ) {

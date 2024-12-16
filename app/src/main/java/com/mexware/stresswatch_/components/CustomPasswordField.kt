@@ -13,6 +13,7 @@ import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
@@ -33,8 +34,8 @@ fun CustomPasswordField(
     onValueChange: (String) -> Unit, // Callback para manejar cambios en el texto
     placeholder: String, // Texto del placeholder
     modifier: Modifier = Modifier.fillMaxWidth(), // Modificador predeterminado
-    backgroundColor: Color = Color(0xFFADD8E6), // Color de fondo
-    placeholderColor: Color = Color.Black, // Color del placeholder
+    backgroundColor: Color = MaterialTheme.colorScheme.inversePrimary, // Color de fondo
+    placeholderColor: Color = MaterialTheme.colorScheme.primaryContainer, // Color del placeholder
     placeholderFontSize: Int = 18, // Tamaño del texto del placeholder en SP
     textFontSize: Int = 20 // Tamaño del texto ingresado por el usuario
 ) {
