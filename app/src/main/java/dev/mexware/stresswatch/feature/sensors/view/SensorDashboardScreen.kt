@@ -27,6 +27,7 @@ fun SensorsDashboardScreen(
                 .padding(horizontal = 20.dp, vertical = 12.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
+            // Estrés
             SensorsSectionHeader("Monitoreo de estrés")
             vm.uiState.cards.firstOrNull { it.type == SensorType.STRESS }?.let { card ->
                 SensorInfoCard(
@@ -40,28 +41,30 @@ fun SensorsDashboardScreen(
                 )
             }
 
-            SensorsSectionHeader("Actividad física")
-            vm.uiState.cards.firstOrNull { it.type == SensorType.DREAM }?.let { card ->
+            // Sueño (corrijo el header)
+            SensorsSectionHeader("Nivel de sueño")
+            vm.uiState.cards.firstOrNull { it.type == SensorType.SLEEP }?.let { card ->
                 SensorInfoCard(
                     title = card.title,
                     description = card.description,
                     iconRes = card.iconRes,
                     onClick = {
-                        vm.onEvent(SensorsEvent.CardClicked(SensorType.DREAM))
-                        onOpen(SensorType.DREAM)
+                        vm.onEvent(SensorsEvent.CardClicked(SensorType.SLEEP))
+                        onOpen(SensorType.SLEEP)
                     }
                 )
             }
 
-            SensorsSectionHeader("Estado del animo")
-            vm.uiState.cards.firstOrNull { it.type == SensorType.TEMPERATURE }?.let { card ->
+            // Ánimo
+            SensorsSectionHeader("Estado de ánimo")
+            vm.uiState.cards.firstOrNull { it.type == SensorType.MOOD }?.let { card ->
                 SensorInfoCard(
                     title = card.title,
                     description = card.description,
                     iconRes = card.iconRes,
                     onClick = {
-                        vm.onEvent(SensorsEvent.CardClicked(SensorType.TEMPERATURE))
-                        onOpen(SensorType.TEMPERATURE)
+                        vm.onEvent(SensorsEvent.CardClicked(SensorType.MOOD))
+                        onOpen(SensorType.MOOD)
                     }
                 )
             }

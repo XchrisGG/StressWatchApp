@@ -26,13 +26,13 @@ class SensorsViewModel : ViewModel() {
                     iconRes = R.drawable.logo_stress
                 ),
                 SensorCard(
-                    type = SensorType.DREAM, // cambia a SLEEP si lo necesitas
+                    type = SensorType.SLEEP, // cambia a SLEEP si lo necesitas
                     title = "Nivel de actividad",
                     description = "Movimiento y energía diaria",
                     iconRes = R.drawable.logo_stress
                 ),
                 SensorCard(
-                    type = SensorType.TEMPERATURE,
+                    type = SensorType.MOOD,
                     title = "Temperatura corporal",
                     description = "Variaciones que influyen en tu bienestar",
                     iconRes = R.drawable.logo_stress

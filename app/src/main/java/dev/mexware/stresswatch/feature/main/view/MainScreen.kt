@@ -13,6 +13,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
 import dev.mexware.stresswatch.R
 import dev.mexware.stresswatch.components.MainBottomBar
 import dev.mexware.stresswatch.feature.main.model.MainDestination
@@ -21,11 +23,13 @@ import dev.mexware.stresswatch.ui.theme.StressDarkBlue
 
 // Home real
 import dev.mexware.stresswatch.feature.home.view.HomeScreen
-// 👇 Sensors dashboard real
+// Chat real
+import dev.mexware.stresswatch.feature.chat.view.ChatScreen
+// Sensors dashboard real
 import dev.mexware.stresswatch.feature.sensors.view.SensorsDashboardScreen
 import dev.mexware.stresswatch.feature.sensors.model.SensorType
-
-@Composable private fun ChatScreenPlaceholder() { androidx.compose.material3.Text("Chat") }
+// Detalle de sensor (única pantalla parametrizada)
+import dev.mexware.stresswatch.feature.sensors.view.detail.SensorDetailScreen
 
 @Composable
 fun MainScreen(
@@ -65,19 +69,24 @@ fun MainScreen(
                     HomeScreen(userName = userName)
                 }
                 composable(MainDestination.CHAT.route) {
-                    ChatScreenPlaceholder()
+                    ChatScreen()
                 }
+                // Dashboard de sensores
                 composable(MainDestination.SENSORS.route) {
                     SensorsDashboardScreen(
                         onOpen = { type: SensorType ->
-                            // TODO: navega a tus subpantallas cuando las tengas
-                            // when (type) {
-                            //   SensorType.STRESS -> nav.navigate("sensors_stress")
-                            //   SensorType.ACTIVITY -> nav.navigate("sensors_activity")
-                            //   SensorType.TEMPERATURE -> nav.navigate("sensors_temperature")
-                            // }
+                            nav.navigate("sensors_detail/${type.name}")
                         }
                     )
+                }
+                // Detalle de sensor (única pantalla para STRESS/SLEEP/MOOD)
+                composable(
+                    route = "sensors_detail/{type}",
+                    arguments = listOf(navArgument("type") { type = NavType.StringType })
+                ) { backStack ->
+                    val typeArg = backStack.arguments!!.getString("type")!!
+                    val type = SensorType.valueOf(typeArg)
+                    SensorDetailScreen(type = type)
                 }
             }
         }
