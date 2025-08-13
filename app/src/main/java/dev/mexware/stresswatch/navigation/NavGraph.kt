@@ -17,8 +17,13 @@ fun NavGraph(){
 
     NavHost(navControler, startDestination =  "logo"){
         composable(route = Screen.LogoScreen.name){ LogoScreen(navControler) }
-        composable(route = Screen.LoginScreen.name) { LoginScreen(navControler) }
+        composable(route = Screen.LoginScreen.name) {
+            LoginScreen(
+                navController = navControler,
+                navigateToHome = { navControler.navigate(Screen.MainScreen.name) }
+            )
+        }
         composable(route = Screen.RegisterScreen.name) { RegisterScreen(navControler) }
-        composable(route = Screen.MainScreen.name) { MainScreen(navControler) }
+        composable(route = Screen.MainScreen.name) { MainScreen() }
     }
 }

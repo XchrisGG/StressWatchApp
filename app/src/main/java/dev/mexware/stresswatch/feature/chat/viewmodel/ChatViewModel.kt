@@ -11,6 +11,12 @@ import dev.mexware.stresswatch.feature.chat.model.events.ChatUiState
 
 class ChatViewModel : ViewModel() {
 
+    private val mentalHealthResponses = mapOf(
+        "me siento mal" to "Lamento que te sientas así. Respira profundo y recuerda que buscar ayuda profesional puede ser de gran apoyo.",
+        "estoy decaido" to "Entiendo que te sientas decaído. Intenta hacer una pausa y hablar con alguien de confianza sobre cómo te sientes.",
+        "me siento solo" to "No estás solo. Contacta a un amigo o familiar y recuerda que siempre puedes buscar ayuda profesional."
+    )
+
     var uiState by mutableStateOf(
         ChatUiState(
             messages = listOf(
@@ -46,10 +52,14 @@ class ChatViewModel : ViewModel() {
             isSending = false
         )
 
-        // (Opcional) Respuesta mock del bot
+        val responseText = mentalHealthResponses.entries
+            .firstOrNull { text.lowercase().contains(it.key) }
+            ?.value
+            ?: "¡Gracias por tu mensaje! Pronto te responderé 😊"
+
         val botMsg = ChatMessage(
             id = System.currentTimeMillis() + 1,
-            text = "¡Gracias por tu mensaje! Pronto te responderé 😊",
+            text = responseText,
             sender = Sender.BOT
         )
         uiState = uiState.copy(messages = uiState.messages + botMsg)
