@@ -12,7 +12,7 @@ val StressGray       = Color(0xFF94A3B8) // texto secundario
 val StressError      = Color(0xFFB3261E)
 
 // Derivados para Material3 (puedes afinarlos con Figma)
-val Primary             = StressMint
+val Primary             = StressDarkBlue
 val OnPrimaryLight      = StressWhite
 val OnPrimaryDark       = StressWhite
 

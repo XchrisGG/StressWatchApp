@@ -23,6 +23,8 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import dev.mexware.stresswatch.components.ui.AppTextField
 import dev.mexware.stresswatch.components.ui.PrimaryButton
 import dev.mexware.stresswatch.feature.auth.model.events.LoginEvent
@@ -36,6 +38,7 @@ import dev.mexware.stresswatch.components.util.noRippleClickable
 
 @Composable
 fun LoginScreen(
+    navController: NavHostController,
     navigateToHome: () -> Unit = {},
     navigateToRegister: () -> Unit = {},
     navigateToForgot: () -> Unit = {},
