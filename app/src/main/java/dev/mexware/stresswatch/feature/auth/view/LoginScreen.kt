@@ -23,7 +23,6 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import dev.mexware.stresswatch.components.ui.AppTextField
 import dev.mexware.stresswatch.components.ui.PrimaryButton
@@ -33,14 +32,13 @@ import dev.mexware.stresswatch.feature.auth.viewmodel.LoginViewModel
 import dev.mexware.stresswatch.ui.theme.StressDarkBlue
 import dev.mexware.stresswatch.ui.theme.StressWhite
 import dev.mexware.stresswatch.components.util.noRippleClickable
-
+import dev.mexware.stresswatch.navigation.Screen
 
 
 @Composable
 fun LoginScreen(
     navController: NavHostController,
     navigateToHome: () -> Unit = {},
-    navigateToRegister: () -> Unit = {},
     navigateToForgot: () -> Unit = {},
     viewModel: LoginViewModel = viewModel()
 ) {
@@ -127,7 +125,7 @@ fun LoginScreen(
                 // ===== BOTÓN ENTRAR (mint, pill) =====
                 PrimaryButton(
                     text = "Iniciar sesión",
-                    onClick = { viewModel.onEvent(LoginEvent.Submit) },
+                    onClick = { navController.navigate(Screen.MainScreen.name) },
                     enabled = !state.isLoading,
                     modifier = Modifier
                         .fillMaxWidth()
@@ -146,7 +144,7 @@ fun LoginScreen(
                         color = StressWhite,
                         modifier = Modifier
                             .padding(vertical = 8.dp)
-                            .noRippleClickable { navigateToRegister() }
+                            .noRippleClickable { navController.navigate(Screen.RegisterScreen.name) }
                     )
                     Text(
                         text = "¿Olvidaste tu contraseña?",

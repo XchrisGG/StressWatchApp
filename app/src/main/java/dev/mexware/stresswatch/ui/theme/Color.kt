@@ -8,7 +8,7 @@ val StressMint       = Color(0xFF60B9A1) // acciones primarias
 val StressWhite      = Color(0xFFFFFFFF) // texto sobre fondo oscuro
 val StressBlack      = Color(0xFF0F172A) // texto oscuro sobre superficies claras
 val StressGrayLight  = Color(0xFFF5F5F5) // superficies claras
-val StressGray       = Color(0xFF94A3B8) // texto secundario
+val StressGray       = Color(0xFFFFFDD0) // texto secundario
 val StressError      = Color(0xFFB3261E)
 
 // Derivados para Material3 (puedes afinarlos con Figma)

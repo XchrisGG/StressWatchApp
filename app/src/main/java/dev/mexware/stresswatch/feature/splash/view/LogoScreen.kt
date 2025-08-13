@@ -6,7 +6,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -35,7 +34,7 @@ fun LogoScreen(navController: NavHostController) {
                 contentDescription = "StressWatch logo",
                 contentScale = ContentScale.Fit,
                 modifier = Modifier
-                    .size(160.dp)
+                    .size(280.dp)
                     .clickable { navController.navigate(Screen.LoginScreen.name) }
 
             )
