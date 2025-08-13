@@ -14,11 +14,16 @@ import dev.mexware.stresswatch.feature.home.viewmodel.HomeViewModel
 @Composable
 fun HomeScreen(
     userName: String,                // viene desde MainScreen
-    vm: HomeViewModel = viewModel()
+    profileIndex: Int = 0,
+    vm: HomeViewModel = viewModel(),
 ) {
     // Inyecta el nombre recibido (si cambia, actualiza)
     androidx.compose.runtime.LaunchedEffect(userName) {
         if (userName.isNotBlank()) vm.setName(userName)
+    }
+    // Selecciona el perfil simulado
+    androidx.compose.runtime.LaunchedEffect(profileIndex) {
+        vm.selectProfile(profileIndex)
     }
 
     val state = vm.uiState

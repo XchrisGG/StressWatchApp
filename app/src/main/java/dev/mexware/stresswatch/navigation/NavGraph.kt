@@ -19,6 +19,6 @@ fun NavGraph(){
         composable(route = Screen.LogoScreen.name){ LogoScreen(navControler) }
         composable(route = Screen.LoginScreen.name) { LoginScreen(navControler) }
         composable(route = Screen.RegisterScreen.name) { RegisterScreen(navControler) }
-        composable(route = Screen.MainScreen.name) { MainScreen(navControler) }
+        composable(route = Screen.MainScreen.name) { MainScreen() }
     }
 }
