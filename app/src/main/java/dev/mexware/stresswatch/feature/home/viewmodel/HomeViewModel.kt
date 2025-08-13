@@ -16,11 +16,6 @@ class HomeViewModel(
     var uiState by mutableStateOf(profilesRepository.currentHomeUiState())
         private set
 
-    fun selectProfile(index: Int) {
-        profilesRepository.selectProfile(index)
-        uiState = profilesRepository.currentHomeUiState()
-    }
-
     fun onEvent(e: HomeEvent) {
         when (e) {
             HomeEvent.Refresh -> { /* TODO: cargar perfil real */ }
@@ -28,8 +23,4 @@ class HomeViewModel(
         }
     }
 
-    /** Permite inyectar el nombre desde MainScreen si lo pasas por parámetro */
-    fun setName(name: String) {
-        uiState = uiState.copy(name = name)
-    }
 }

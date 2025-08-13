@@ -10,12 +10,16 @@ import dev.mexware.stresswatch.feature.sensors.model.timeseries.TimePoint
 object SampleProfilesRepository : ProfilesRepository {
 
     data class Profile(
+        val email: String,
+        val password: String,
         val home: HomeUiState,
         val sensors: Map<SensorType, SensorDetailUiState>
     )
 
     private val profiles = listOf(
         Profile(
+            email = "ana@example.com",
+            password = "ana123",
             home = HomeUiState(
                 name = "Ana",
                 gender = Gender.FEMALE,
@@ -78,6 +82,8 @@ object SampleProfilesRepository : ProfilesRepository {
             )
         ),
         Profile(
+            email = "luis@example.com",
+            password = "luis123",
             home = HomeUiState(
                 name = "Luis",
                 gender = Gender.MALE,
@@ -140,6 +146,8 @@ object SampleProfilesRepository : ProfilesRepository {
             )
         ),
         Profile(
+            email = "carla@example.com",
+            password = "carla123",
             home = HomeUiState(
                 name = "Carla",
                 gender = Gender.FEMALE,
@@ -207,6 +215,16 @@ object SampleProfilesRepository : ProfilesRepository {
 
     override fun selectProfile(index: Int) {
         currentIndex = index.coerceIn(profiles.indices)
+    }
+
+    override fun login(email: String, password: String): Boolean {
+        val idx = profiles.indexOfFirst { it.email == email && it.password == password }
+        return if (idx >= 0) {
+            currentIndex = idx
+            true
+        } else {
+            false
+        }
     }
 
     override fun currentHomeUiState(): HomeUiState = profiles[currentIndex].home

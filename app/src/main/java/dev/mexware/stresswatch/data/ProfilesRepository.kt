@@ -8,5 +8,6 @@ interface ProfilesRepository {
     fun selectProfile(index: Int)
     fun currentHomeUiState(): HomeUiState
     fun sensorData(type: SensorType): SensorDetailUiState
+    fun login(email: String, password: String): Boolean
 }
 

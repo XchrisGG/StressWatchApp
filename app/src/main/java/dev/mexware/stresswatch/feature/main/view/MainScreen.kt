@@ -31,10 +31,7 @@ import dev.mexware.stresswatch.feature.sensors.model.SensorType
 import dev.mexware.stresswatch.feature.sensors.view.detail.SensorDetailScreen
 
 @Composable
-fun MainScreen(
-    userName: String = "Christian", // pásalo desde arriba cuando lo tengas
-    profileIndex: Int = 0
-) {
+fun MainScreen() {
     val nav = rememberNavController()
     val currentRoute = nav.currentBackStackEntryAsState().value?.destination?.route
 
@@ -65,7 +62,7 @@ fun MainScreen(
                 startDestination = MainDestination.HOME.route
             ) {
                 composable(MainDestination.HOME.route) {
-                    HomeScreen(userName = userName, profileIndex = profileIndex)
+                    HomeScreen()
                 }
                 composable(MainDestination.CHAT.route) {
                     ChatScreen()

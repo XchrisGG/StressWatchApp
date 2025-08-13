@@ -125,7 +125,7 @@ fun LoginScreen(
                 // ===== BOTÓN ENTRAR (mint, pill) =====
                 PrimaryButton(
                     text = "Iniciar sesión",
-                    onClick = { navController.navigate(Screen.MainScreen.name) },
+                    onClick = { viewModel.onEvent(LoginEvent.Submit) },
                     enabled = !state.isLoading,
                     modifier = Modifier
                         .fillMaxWidth()
