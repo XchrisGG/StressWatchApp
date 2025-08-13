@@ -52,6 +52,7 @@ dependencies {
     kapt(libs.androidx.lifecycle.compiler)
 
 
+    implementation(libs.androidx.material.icons.extended)
 
 
 
