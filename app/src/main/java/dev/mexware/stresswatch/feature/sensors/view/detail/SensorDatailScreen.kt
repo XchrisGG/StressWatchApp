@@ -26,6 +26,9 @@ fun SensorDetailScreen(
     LaunchedEffect(type) { vm.load(type) }
     val state = vm.uiState ?: return
 
+    val avg = state.points.map { it.value }.average().toInt()
+    val max = state.points.maxOf { it.value }.toInt()
+
     Surface(color = bg, modifier = Modifier.fillMaxSize()) {
         Column(
             modifier = Modifier
@@ -49,7 +52,18 @@ fun SensorDetailScreen(
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 MetricStat(
                     title = state.summary.totalLabel,
-                    value = state.summary.totalValue
+                    value = state.summary.totalValue,
+                    modifier = Modifier.weight(1f)
+                )
+                MetricStat(
+                    title = "Promedio",
+                    value = "${avg}%",
+                    modifier = Modifier.weight(1f)
+                )
+                MetricStat(
+                    title = "Máximo",
+                    value = "${max}%",
+                    modifier = Modifier.weight(1f)
                 )
             }
 
