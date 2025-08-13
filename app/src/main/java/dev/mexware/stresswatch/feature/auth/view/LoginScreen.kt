@@ -1,9 +1,10 @@
 package dev.mexware.stresswatch.feature.auth.view
 
+import dev.mexware.stresswatch.R
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -29,12 +30,9 @@ import dev.mexware.stresswatch.feature.auth.view.components.AuthPasswordField
 import dev.mexware.stresswatch.feature.auth.viewmodel.LoginViewModel
 import dev.mexware.stresswatch.ui.theme.StressDarkBlue
 import dev.mexware.stresswatch.ui.theme.StressWhite
+import dev.mexware.stresswatch.components.util.noRippleClickable
 
 
-
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.runtime.remember
 
 @Composable
 fun LoginScreen(
@@ -76,14 +74,14 @@ fun LoginScreen(
                 // ===== LOGO (coloca tu recurso cuando lo tengas) =====
                 // Reemplaza R.drawable.logo_stresswatch por el nombre real del asset
                 Spacer(Modifier.height(16.dp))
-               /* Image(
-                    painter = painterResource(id = R.drawable.logo_stresswatch),
+                Image(
+                    painter = painterResource(id = R.drawable.logo_stress),
                     contentDescription = "StressWatch",
                     modifier = Modifier
-                        .size(140.dp)
+                        .size(200.dp)
                         .padding(bottom = 12.dp),
                     contentScale = ContentScale.Fit
-                )*/
+                )
 
                 // Título opcional (según Figma usas textos claros)
                 Text(
@@ -162,18 +160,6 @@ fun LoginScreen(
     }
 }
 
-/**
- * Helper para clickable sin ripple (coincide con look de enlaces en tu Figma).
- */
 
 
 
-@Composable
-private fun Modifier.noRippleClickable(onClick: () -> Unit): Modifier =
-    this.then(
-        Modifier.clickable(
-            interactionSource = remember { MutableInteractionSource() },
-            indication = null,
-            onClick = onClick
-        )
-    )
