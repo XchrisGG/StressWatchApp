@@ -8,7 +8,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavGraph.Companion.findStartDestination
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -32,10 +31,7 @@ import dev.mexware.stresswatch.feature.sensors.model.SensorType
 import dev.mexware.stresswatch.feature.sensors.view.detail.SensorDetailScreen
 
 @Composable
-fun MainScreen(
-    navController: NavHostController,
-    userName: String = "Christian" // pásalo desde arriba cuando lo tengas
-) {
+fun MainScreen() {
     val nav = rememberNavController()
     val currentRoute = nav.currentBackStackEntryAsState().value?.destination?.route
 
@@ -66,7 +62,7 @@ fun MainScreen(
                 startDestination = MainDestination.HOME.route
             ) {
                 composable(MainDestination.HOME.route) {
-                    HomeScreen(userName = userName)
+                    HomeScreen()
                 }
                 composable(MainDestination.CHAT.route) {
                     ChatScreen()

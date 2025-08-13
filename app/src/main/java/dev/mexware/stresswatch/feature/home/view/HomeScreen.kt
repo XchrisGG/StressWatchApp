@@ -13,13 +13,8 @@ import dev.mexware.stresswatch.feature.home.viewmodel.HomeViewModel
 
 @Composable
 fun HomeScreen(
-    userName: String,                // viene desde MainScreen
-    vm: HomeViewModel = viewModel()
+    vm: HomeViewModel = viewModel(),
 ) {
-    // Inyecta el nombre recibido (si cambia, actualiza)
-    androidx.compose.runtime.LaunchedEffect(userName) {
-        if (userName.isNotBlank()) vm.setName(userName)
-    }
 
     val state = vm.uiState
     val background = Color(0xFF0B2D46) // azul fondo
